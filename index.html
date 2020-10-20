@@ -7,27 +7,33 @@
   <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-  <h1>Day 7 - Character Count</h1>
+  <h1>Day 9 - Character and Word Count</h1>
   <div class="container">
     <div class="text-container">
       <label for="text" class="text-label">Enter your text below.</label>
-      <textarea id="text" class="text-counter"></textarea>
+      <textarea id="text" class="text-counter" autofocus></textarea>
     </div>
-
-    <p>You've written <strong><span id="character-count">0</span> <span id="plural">characters</span></strong>.</p> 
+    <p>You've written <strong><span id="word-count">0</span> words</strong> and <strong><span id="character-count">0</span> characters</strong>.</p>
     </div>
-    <a href="https://github.com/hirohiro2255/character-count" target="_blank">Source Code</a>
+    <a href="https://github.com/hirohiro2255/Character-and-Word-Count" target="_blank">Source Code</a>
 <script>
-  const text = document.querySelector('#text');
-  const count = document.querySelector('#character-count');
-  const plural = document.querySelector('#plural');
-
-  text.addEventListener('input', (e) => {
-      count.innerText = e.target.value.length;
-    plural.innerText = e.target.value.length !== 1 ? 'characters' : 'character';
-  }, false);
-
-
+  const textarea = document.querySelector('#text');
+  const wordCount = document.querySelector('#word-count');
+  const charCount = document.querySelector('#character-count');
+  textarea.addEventListener('input', (e) => {
+    const wordArr = e.target.value.split(' ').filter((val) => {
+      return val.length > 0;
+    }).map((val) => {
+      return val.trim();
+    });
+    const charArr = e.target.value.split('').map((val) => {
+      return val.trim();
+    }).filter((val) => {
+      return val.length === 1;
+    });
+    wordCount.innerText = wordArr.length;
+    charCount.innerText = charArr.length;
+  });
 </script>
 </body>
 </html>
