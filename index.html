@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Counter</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+  <h1>Day 7 - Character Count</h1>
+  <div class="container">
+    <div class="text-container">
+      <label for="text" class="text-label">Enter your text below.</label>
+      <textarea id="text" class="text-counter"></textarea>
+    </div>
+
+    <p>You've written <strong><span id="character-count">0</span> <span id="plural">characters</span></strong>.</p> 
+    </div>
+    <a href="https://github.com/hirohiro2255/character-count" target="_blank">Source Code</a>
+<script>
+  const text = document.querySelector('#text');
+  const count = document.querySelector('#character-count');
+  const plural = document.querySelector('#plural');
+
+  text.addEventListener('input', (e) => {
+      count.innerText = e.target.value.length;
+    plural.innerText = e.target.value.length !== 1 ? 'characters' : 'character';
+  }, false);
+
+
+</script>
+</body>
+</html>
